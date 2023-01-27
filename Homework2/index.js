@@ -1,2 +1,2 @@
-let userName = prompt("what's your name?", "Jonh")
-alert("Hello, John! How are you?")
+let userName = prompt("What's your name?", "Jonh")
+alert(`Hello, ${userName}! How are you?`)
