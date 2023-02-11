@@ -28,25 +28,19 @@ function three() {
 function four() {
     let x = +prompt("Введіть число:", '')
 
-    for (;true;) {
-        if (Math.trunc(x) == 1) {
-            break
-        } else if (Math.trunc(x) % 2 === 1) {
-            console.log(x)
-        }
-        break
+    for (let i = 2; i <= x; i++) {
+      for (let j = 2; j < i; j++) { 
+        if (i % j == 0) continue
+      }
+      console.log(i); 
     }
 }
 
 function five() {
     let x = +prompt("Введіть число:", '')
 
-    for (;true;) {
-        if (x % 3 === 0) {
-            console.log(x)
-        } else {
-            break
-        }
+    while (x % 3 === 0) {
+        console.log(x)
         break
     }
 }
