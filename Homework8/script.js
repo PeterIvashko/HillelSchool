@@ -33,9 +33,10 @@ let str = 'hello world'
 
 function getReplace() {
     arr.forEach(item => {
-        re = new RegExp(item, 'g')
+        const re = new RegExp(item, 'g')
         str = str.replace(re, '')
     });
+    return str
 }
 
-console.log(str)
+console.log(getReplace(str))
