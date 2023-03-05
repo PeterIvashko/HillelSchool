@@ -1,17 +1,11 @@
-let ladder = {
-  step: 0,
-  up: function () {
-    this.step++;
-    return this;
-  },
-  down: function () {
-    this.step--;
-    return this;
-  },
-  showStep: function () { 
-    alert(this.step);
-    return this;
-  }
-};
+const a = null;
+let b = undefined;
+let c = 0;
 
-ladder.up().up().down().showStep();
+if (a == b) {
+    console.log('first');
+} else if (a === b) {
+    console.log('second');
+} else {
+    console.log(a == c);
+}
