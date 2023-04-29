@@ -35,8 +35,20 @@ function Tasks(_formInput, _todosWrapper) {
       todoItem.remove();
     }
   });
+
+  this.markAsDone = (index) => {
+    const todoItems = todosWrapper.querySelectorAll('.todo-item');
+    if (todoItems[index]) {
+      const checkbox = todoItems[index].querySelector('.todo-item__checkbox');
+      checkbox.checked = true;
+      const description = todoItems[index].querySelector('.todo-item__description');
+      description.classList.add('todo-item__description--done');
+    }
+  };
 }
 
 const task = new Tasks('.js--form__input', '.js--todos-wrapper');
 
 document.querySelector('.js--form').addEventListener('submit', task.addItem);
+
+task.markAsDone(0); 
