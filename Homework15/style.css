@@ -1,0 +1,59 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form__input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+}
+
+.form__btn {
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-item__checkbox {
+    margin-right: 10px;
+}
+
+.todo-item__description {
+    flex-grow: 1;
+    text-decoration: none;
+    color: #333;
+}
+
+.todo-item__description--done {
+    text-decoration: line-through;
+}
+
+.todo-item__delete-btn {
+    margin-left: 10px;
+    border: none;
+    background-color: #f44336;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
