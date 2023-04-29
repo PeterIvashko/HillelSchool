@@ -44,18 +44,18 @@ $(document).ready(function() {
 
   $(document).keydown(function(event) {
     switch(event.which) {
-      case 37: // left arrow key
+      case 37: 
         changeImage(-1);
         break;
-      case 39: // right arrow key
+      case 39: 
         changeImage(1);
         break;
-      case 27: // escape key
+      case 27: 
         closeModal();
         break;
       default:
-        return; // exit this handler for other keys
+        return;
     }
-    event.preventDefault(); // prevent the default action (scroll / move caret)
+    event.preventDefault(); 
   });
 });
