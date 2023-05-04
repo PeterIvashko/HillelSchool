@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form>
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password">
+  
+    <div id="error-messages">
+        <p id="uppercase-error">Пароль повинен містити хоча б одну велику літеру</p>
+        <p id="digit-error">Пароль повинен містити хоча б одну цифру</p>
+        <p id="punctuation-error">Пароль повинен містити хоча б один знак пунктуації</p>
+        <p id="length-error">Пароль повинен бути не коротше 8 символів</p>
+    </div>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
