@@ -1,73 +1,49 @@
-const searchBtn = document.getElementById('searchBtn');
-searchBtn.addEventListener('click', () => {
-  const postId = document.getElementById('postId').value;
-  getPostById(postId)
-    .then(post => {
-      showPost(post);
-    })
-    .catch(error => {
-      console.error(error);
-      const postBlock = document.getElementById('postBlock');
-      postBlock.textContent = 'Пост не знайдено';
-    });
-});
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBtn = document.getElementById('search-btn');
+  const inputId = document.getElementById('input-id');
+  const postContainer = document.getElementById('post-container');
+  const commentBtn = document.getElementById('comment-btn');
+  const commentContainer = document.getElementById('comment-container');
+  
+  searchBtn.addEventListener('click', () => {
+    const id = inputId.value;
+    if (!id || id < 1 || id > 100) {
+      alert('Please enter a valid ID between 1 and 100.');
+      return;
+    }
 
-function getPostById(postId) {
-  return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Пост не знайдено');
-    });
-}
-
-function showPost(post) {
-  const postBlock = document.createElement('div');
-  postBlock.innerHTML = `
-    <h2>${post.title}</h2>
-    <p>${post.body}</p>
-  `;
-  const commentsBtn = document.createElement('button');
-  commentsBtn.textContent = 'Коментарі';
-  commentsBtn.addEventListener('click', () => {
-    getCommentsByPostId(post.id)
-      .then(comments => {
-        showComments(comments);
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        postContainer.innerHTML = `
+          <h2>${data.title}</h2>
+          <p>${data.body}</p>
+        `;
+        commentBtn.style.display = 'block';
       })
       .catch(error => {
         console.error(error);
-        const commentsBlock = document.getElementById('commentsBlock');
-        commentsBlock.textContent = 'Помилка при отриманні коментарів';
+        alert('An error occurred while fetching data.');
       });
   });
-  postBlock.appendChild(commentsBtn);
-  const postContainer = document.getElementById('postBlock');
-  postContainer.innerHTML = '';
-  postContainer.appendChild(postBlock);
-}
 
-function getCommentsByPostId(postId) {
-  return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Коментарі не знайдено');
-    });
-}
-
-function showComments(comments) {
-  const commentsBlock = document.createElement('div');
-  comments.forEach(comment => {
-    const commentBlock = document.createElement('div');
-    commentBlock.innerHTML = `
-      <h4>${comment.name} (${comment.email})</h4>
-      <p>${comment.body}</p>
-    `;
-    commentsBlock.appendChild(commentBlock);
+  commentBtn.addEventListener('click', () => {
+    const id = inputId.value;
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+      .then(response => response.json())
+      .then(data => {
+        commentContainer.innerHTML = '';
+        data.forEach(comment => {
+          commentContainer.innerHTML += `
+            <h4>${comment.name}</h4>
+            <p>${comment.body}</p>
+            <hr>
+          `;
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        alert('An error occurred while fetching comments.');
+      });
   });
-  const commentsContainer = document.getElementById('commentsBlock');
-  commentsContainer.innerHTML = '';
-  commentsContainer.appendChild(commentsBlock);
-}
+});
