@@ -1,0 +1,15 @@
+/* styles.css */
+body {
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
