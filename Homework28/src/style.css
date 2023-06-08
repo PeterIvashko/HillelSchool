@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+span {
+    font-size: 3rem;
+}
+
+button {
+    margin-top: 0.5rem;
+}
+
+.results {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
