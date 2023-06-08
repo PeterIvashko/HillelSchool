@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars API Interface</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Star Wars API Interface</h1>
+
+  <form id="apiForm">
+    <label for="endpointInput">API Endpoint:</label>
+    <input type="text" id="endpointInput" required>
+    <button type="submit">Get Data</button>
+  </form>
+
+  <div id="loader" class="hidden"></div>
+
+  <div id="resultContainer" class="hidden">
+    <div id="idContainer"></div>
+    <div id="controllerContainer"></div>
+  </div>
+
+  <pre id="output"></pre>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
