@@ -1,16 +1,14 @@
-document.getElementById('apiForm').addEventListener('submit', function (event) {
+document.getElementById('apiForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  // Clear previous results
   document.getElementById('output').innerText = '';
   document.getElementById('idContainer').innerText = '';
   document.getElementById('controllerContainer').innerText = '';
 
-  // Show loader
   document.getElementById('loader').classList.remove('hidden');
 
   const endpoint = document.getElementById('endpointInput').value.trim();
-  const apiUrl = 'https://swapi.dev/api/';
+  const apiUrl = document.getElementById('apiUrlInput').value.trim();
 
   fetch(apiUrl + endpoint)
     .then(response => {
@@ -20,19 +18,27 @@ document.getElementById('apiForm').addEventListener('submit', function (event) {
       return response.json();
     })
     .then(data => {
-      // Hide loader
       document.getElementById('loader').classList.add('hidden');
       document.getElementById('resultContainer').classList.remove('hidden');
 
-      // Display formatted response
       document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+
+      if (data.hasOwnProperty('Id')) {
+        document.getElementById('idContainer').innerText = `Id: ${data.Id}`;
+      } else {
+        document.getElementById('idContainer').innerText = 'Id not found';
+      }
+
+      if (data.hasOwnProperty('controller')) {
+        document.getElementById('controllerContainer').innerText = `Controller: ${data.controller}`;
+      } else {
+        document.getElementById('controllerContainer').innerText = 'Controller not found';
+      }
     })
     .catch(error => {
-      // Hide loader
       document.getElementById('loader').classList.add('hidden');
       document.getElementById('resultContainer').classList.remove('hidden');
 
-      // Display error message
       document.getElementById('output').innerText = `Error: ${error.message}`;
     });
 });
